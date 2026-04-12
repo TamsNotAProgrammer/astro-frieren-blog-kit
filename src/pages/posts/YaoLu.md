@@ -23,7 +23,7 @@ Painting environmental anger and frustration however, is much more awkward. When
 
 Below I share some climate art that you as the reader are very welcome to like, and to disagree with me on, but that I think is bland. Please allow me to defend myself. I think all of these pieces are good to look at for 10 seconds and you’ll think “oh that's a fun idea” or “what skilled painting that is” but that's where it ends, you’re done with it after that. The point that humans are damaging our environment is so well covered that if that’s the main thing a piece is really saying, it struggles to say anything. This is not a major critique of these artists, but an observation on the difficulty of making deep environmental art.
 
-![Trio Of Environmental Pieces](/src/EnvironmentalTrio.PNG)
+![Trio Of Environmental Pieces](/EnvironmentalTrio.PNG)
 #### In order: Oxygen 1657 - Benjamin West, Returning Life - Tapas Das, Birds Watching - Jenny Kendler.  I don't wish to single out these artists specifically, just provide a few examples to illustrate why I think greatness is difficult
 
 Great works like Worn Out are best when you spend time with them to sit and absorb her last emotions before the fall, ponder the old man’s life, whose fault this is, and the vast empty loneliness of the field. Although producing a climate piece like this is possible, I find many pieces like those above don’t give me space to think and ask questions. It's a simple punch in the face announcing human damage is bad, which it is but if you can’t keep me interested in your piece for more than 20 seconds you’ve lost the battle of the artist.
@@ -40,13 +40,13 @@ First is an appreciation of what traditional Chinese art looks like (the classic
 
 The next essential point to understand is the rapid growth of construction in China. Any city you visit will have new high-rise construction underway in it. Ubiquitously across Asia, construction is matched with a distinctive Green netting. [In 2025 this made the news after improper quality highly flammable netting was used, leading to 159 deaths in a fire in Hong Kong.](https://www.bbc.co.uk/news/articles/c62lv79p0pdo) Usually the netting is discarded as waste once a building is complete. With all this in mind. Here is Yao Lu’s first piece that I stumbled across, that caused me to freeze in my scrolling.
 
-![Yao Lu. Angling On Low Island 2009. C-print; 120 cm x 56 cm Courtesy of the artist. Licensed under Creative Commons Attribution 4.0.](/src/AnglingOnLow.jpg.jpg)
+![Yao Lu. Angling On Low Island 2009. C-print; 120 cm x 56 cm Courtesy of the artist. Licensed under Creative Commons Attribution 4.0.](/AnglingOnLow.jpg.jpg)
 
 #### Yao Lu. Passing Spring at the Ancient Dock. 2006. C-print; 85 x 85 cm. Courtesy of the artist. Licensed under Creative Commons Attribution 4.0.
 
 A quick search then led me to this, my clear favourite of his works, Passing Spring at the Ancient Dock.
 
-![Yao Lu. Passing Spring at the Ancient Dock. 2006. C-print; 85 x 85 cm. Courtesy of the artist. Licensed under Creative Commons Attribution 4.0.](/src/PassingSpring.PNG)
+![Yao Lu. Passing Spring at the Ancient Dock. 2006. C-print; 85 x 85 cm. Courtesy of the artist. Licensed under Creative Commons Attribution 4.0.](/PassingSpring.PNG)
 
 #### Yao Lu. Passing Spring at the Ancient Dock. 2006. C-print; 85 x 85 cm. Courtesy of the artist. Licensed under Creative Commons Attribution 4.0.
 
@@ -74,7 +74,7 @@ The fact that you can argue about the answers to all of these questions is what 
 I must warn you now quickly at this point in the article that what you see next may ruin your enjoyment. Yao Lu actually has some works that miss the mark so hard for me that they should’ve been in the montage of environmental art that fails to be deep. If you don’t want the great skill of the prior works which we contemplated to be soured, you may need to rapidly abandon this article.
 
 
-![Yao Lu. Heaven on Earth No. 2, 2014](/src/HeavenOnEarth2.jpg)
+![Yao Lu. Heaven on Earth No. 2, 2014](/HeavenOnEarth2.jpg)
 
 
 #### Yao Lu. Heaven on Earth No. 2, 2014.
