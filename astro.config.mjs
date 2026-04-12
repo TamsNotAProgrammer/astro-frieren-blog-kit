@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://github.com/TamsNotAProgrammer/astro-frieren-blog-kit/", // Update this to your site URL if needed
+  site: "https://astro-frieren-blog-kit.pages.dev", // Update this to your site URL if needed
   markdown: {
     syntaxHighlight: false, // Disable built-in syntax highlighting from Astro
     remarkPlugins: [remarkReadingTime], // Removed rehypePrettyCode
