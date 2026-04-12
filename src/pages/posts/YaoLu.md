@@ -46,7 +46,7 @@ The next essential point to understand is the rapid growth of construction in Ch
 
 A quick search then led me to this, my clear favourite of his works, Passing Spring at the Ancient Dock.
 
-![Yao Lu. Passing Spring at the Ancient Dock. 2006. C-print; 85 x 85 cm. Courtesy of the artist. Licensed under Creative Commons Attribution 4.0.](/PassingSpring.PNG)
+![Yao Lu. Passing Spring at the Ancient Dock. 2006. C-print; 85 x 85 cm. Courtesy of the artist. Licensed under Creative Commons Attribution 4.0.](/PassingSpring.png)
 
 #### Yao Lu. Passing Spring at the Ancient Dock. 2006. C-print; 85 x 85 cm. Courtesy of the artist. Licensed under Creative Commons Attribution 4.0.
 
