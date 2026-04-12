@@ -8,6 +8,7 @@ interface Props {
   author: string;
   tags: string[];
   minutesRead: string;
+  wordCount?: number;
   pubDate: string;
   img: {
     src: string;
@@ -15,7 +16,8 @@ interface Props {
   };
 }
 
-const { title, pubDate, tags, minutesRead, img } = Astro.props;
+const { title, pubDate, tags, minutesRead, wordCount, img } = Astro.props;
+const countText = wordCount ? `${wordCount} words` : minutesRead;
 
 const formattedDate = formatDate(pubDate);
 ---
@@ -27,7 +29,7 @@ const formattedDate = formatDate(pubDate);
       <Tags tags={tags} withHref={true} />
     </div>
     <div class="text-sm">
-      <span>{formattedDate}</span> - <span>{minutesRead}</span>
+      <span>{formattedDate}</span> - <span>{countText}</span>
     </div>
     <div class="pt-6">
       {

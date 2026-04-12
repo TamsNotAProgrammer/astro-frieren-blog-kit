@@ -17,28 +17,14 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../../config";
 
   <!-- Primary Meta Tags -->
   <title>{SITE_TITLE}</title>
-  <meta name="title" content={SITE_TITLE} />
+  <meta name="Tamarisk Media" content={SITE_TITLE} />
   <meta name="description" content={SITE_DESCRIPTION} />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={Astro.url} />
-  <meta property="og:title" content={SITE_TITLE} />
-  <meta property="og:description" content={SITE_DESCRIPTION} />
-  <!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={Astro.url} />
-  <meta property="twitter:title" content={SITE_TITLE} />
-  <meta property="twitter:description" content={SITE_DESCRIPTION} />
-  <!-- <meta property="twitter:image" content={new URL(image, Astro.url)} /> -->
 
   <link rel="sitemap" href="/sitemap-index.xml" />
   <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
   <link
     rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>"
+    href="data:image/svg+xml,<svg xmlns=favicon.svg viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>"
   />
 
   <script>

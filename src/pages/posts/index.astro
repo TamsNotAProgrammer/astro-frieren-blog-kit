@@ -32,7 +32,7 @@ const allPosts = Object.values(postModules)
       <p class="px-14 py-6 text-center text-4xl font-bold">All Posts</p>
       {
         allPosts.map((post) => (
-          <div class="my-6 basis-1 last:mb-0">
+          <div class="my-6 w-full last:mb-0">
             <Card post={post} />
           </div>
         ))

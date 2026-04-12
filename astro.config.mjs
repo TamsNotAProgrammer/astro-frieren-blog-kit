@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import remarkReadingTime from "remark-reading-time";
+import { remarkReadingTime } from "./src/utils/readingTime.ts";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 

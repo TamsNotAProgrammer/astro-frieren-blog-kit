@@ -16,6 +16,7 @@ const { frontmatter } = Astro.props;
       author={frontmatter.author}
       tags={frontmatter.tags}
       minutesRead={frontmatter.minutesRead}
+      wordCount={frontmatter.wordCount}
       pubDate={frontmatter.pubDate}
       img={{ src: frontmatter.image.src, alt: frontmatter.image.alt }}
     />

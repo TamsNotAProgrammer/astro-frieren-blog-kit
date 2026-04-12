@@ -1,3 +1,3 @@
-export const SITE_TITLE = "Astro Frieren Blog Kit";
-export const SITE_DESCRIPTION =
-  "Starterkit to build Frieren-themed blog with Astro";
+export const SITE_TITLE = "Tamarisk Media";
+export const SITE_DESCRIPTION = "An Independent Interdisciplinary Blog"
+  ;

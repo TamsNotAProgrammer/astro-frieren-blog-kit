@@ -1,62 +1,22 @@
----
-import { Image } from "astro:assets";
-import Avatar from "../images/frieren-devian.png";
----
-
 <!-- Hero section -->
-<section class="bg-gray-100 py-8 sm:py-12 lg:py-16 dark:bg-gray-900">
+<section class="bg-[#bd987150] py-8 sm:py-12 lg:py-16 dark:bg-[#032922]">
   <div class="my-auto mx-auto max-w-screen-xl px-4 text-center dark:">
     <!-- Profile photo -->
     <div class="flex justify-center mb-8 sm:my-8 md:my-12">
-      <Image
-        src={Avatar}
-        alt="Avatar"
-        class="rounded-full w-32 h-32 object-cover object-top border-8 border-purple-500"
+      <img src="/CroppedSelfie.PNG" alt="Avatar"
+        class="rounded-full w-32 h-32 object-cover object-top border-8 border-[#bd9871]"
       />
     </div>
     <h1
-      class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-800 md:text-5xl lg:text-6xl dark:text-gray-300"
+      class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-[#032922] md:text-5xl lg:text-6xl dark:text-[#f0decc]"
     >
-      Welcome to Frieren Land! 💫
+      Tamarisk Media
     </h1>
     <p
-      class="mb-8 text-lg font-normal text-gray-800 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-300"
+      class="mb-8 text-lg font-normal text-[#032922] lg:text-xl sm:px-16 lg:px-48 dark:text-[#f0decc]"
     >
-      Join me on this exciting adventure as we explore the magical landscape
-      together.
+      Works in Progress: "Species Problems", Data and Sport series, Visiting every gallery in my city. 
     </p>
-    <!-- CTA -->
-    <div
-      class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:mb-8 md:mb-12"
-    >
-      <a
-        href="https://github.com/leifjerami/astro-frieren-blog-kit"
-        target="_blank"
-        class="inline-flex justify-center items-center py-3 px-5 mr-4 text-base font-bold text-center text-purple-500 rounded-full bg-gray-100 focus:ring-4 focus:ring-purple-300 border-8 border-purple-500 hover:border-purple-300 transition-colors duration-300 dark:bg-gray-900"
-      >
-        Download
-        <svg
-          class="w-3.5 h-3.5 ms-2"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 16 18"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M8 1v11m0 0 4-4m-4 4L4 8m11 4v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3"
-          ></path>
-        </svg>
-      </a>
-      <a
-        href="#"
-        class="inline-flex justify-center items-center py-3 px-5 text-base font-bold text-gray-900 focus:outline-none bg-purple-500 rounded-full border-8 border-purple-500 hover:bg-purple-300 hover:border-purple-500 focus:z-10 transition-colors duration-300"
-      >
-        Let's Chat!
-      </a>
     </div>
   </div>
 </section>
