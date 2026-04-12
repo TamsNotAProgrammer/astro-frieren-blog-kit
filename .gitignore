@@ -3,6 +3,9 @@ dist/
 # generated types
 .astro/
 
+# local repo/submodule folder
+Tamariskmedia/
+
 # dependencies
 node_modules/
 
