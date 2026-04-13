@@ -4,7 +4,7 @@ title: The best book about the oceans - A review of 'The Blue Machine'
 pubDate: 2026-04-12
 description: A review of how Helen Czerski's 2023 novel compares to other oceans books
 author: TM Tamarisk
-excerpt: What is soup? No seriously, try come up with some ideas of what makes soup soup...
+excerpt: If you’re considering any study of the oceans, or perhaps now it’s too late, but you wonder what you missed out on, this is the book. 
 image:
   src: /public/StockOcean.jpg
   alt: Stock Image of the ocean.
