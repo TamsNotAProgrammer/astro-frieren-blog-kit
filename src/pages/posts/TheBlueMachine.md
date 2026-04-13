@@ -6,7 +6,7 @@ description: A review of how Helen Czerski's 2023 novel compares to other oceans
 author: TM Tamarisk
 excerpt: If you’re considering any study of the oceans, or perhaps now it’s too late, but you wonder what you missed out on, this is the book. 
 image:
-  src: /public/StockOcean.jpg
+  src: /StockOcean.jpg
   alt: Stock Image of the ocean.
 tags: 
  - Book Review
