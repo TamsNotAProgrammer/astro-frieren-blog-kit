@@ -17,6 +17,9 @@ tags:
 
 ## The Problem With Defining A Native Species
 ​
+![Spartina Anglica, Wikimedia Commons Image](https://upload.wikimedia.org/wikipedia/commons/c/cd/Spartina_anglica.jpg)
+#### (Wikimedia Commons Image of a Salt Marsh)
+
 This unassuming grass pictured is Spartina anglica; as you may guess from the name anglica, it evolved in Britain. This makes it nice and easy to confidently say, this species is not an invasive species here in the UK… except by some definitions of an invasive species it is. Although most people’s idea of an invasive is something brand new and exotic taking over the land, like say, Japanese Knotweed, it’s hard to draw a line on how recently something has to have arrived to be an invader. Spartina Anglica only developed 200 years ago, and several of England's marshes in which it grows are over 500 years old. There’s been marshland here for thousands of years, so if you could ask the marsh what it thinks, it’d tell you that this grass is a very recent new visitor.
 ​
 What this all boils down to is the impossibility of answering the question "what's meant to be here”. In conservation/restoration, it’s relatively easy, and indeed important, to point at things that aren’t meant to be in an ecosystem, like a tarmac road or Japanese Knotweed; but due to the ever-changing nature of the environment, it’s much harder to pick an exact image of what that location “should” be.
