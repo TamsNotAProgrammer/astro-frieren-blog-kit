@@ -14,6 +14,7 @@ tags:
  - Opinion
 
 ---
+#### An Image of Vaibhav Sooryavanshi, Image rights belong to the BCCI.
 
 ## Why do I make such a claim?
 ​
@@ -153,4 +154,4 @@ This would suggest that although they will not be able to build a team quite lik
 There almost certainly will be no team presented with an opportunity like this again for a long time, in regard to Squad Value vs Squad Cost. IPL 2026 and 2027 will be Rajasthan’s 2 best chances of victory. After that, it may be time to wave goodbye to the elite wicket-taking of Jofra Archer, or any of his most sought-after counterparts. 
 
 
-A mighty weight of having to live up to their equally mighty price tag every single week will fall onto the shoulders of the domestic batting quartet. I hope to see them do well. Every word I have written about RR is shared with neutrality, and a slight fondness for a team to be so audacious as to start a 14-year-old against LSG on April 19 2025; changing the course of Indian cricket, and likely global cricket, definitively and irreversibly.
+A mighty weight of having to live up to their equally mighty price tag every single week will fall onto the shoulders of the domestic batting quartet. I hope to see them do well. Every word I have written about RR is shared with neutrality, and a slight fondness for a team with the audacity to start a 14-year-old against LSG on April 19 2025; changing the course of Indian cricket, and likely global cricket, definitively and irreversibly.
