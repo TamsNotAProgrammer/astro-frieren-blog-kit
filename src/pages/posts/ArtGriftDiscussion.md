@@ -18,7 +18,7 @@ tags:
 
 As always when attacking a group of people, I should start this with a disclaimer that I don’t necessarily believe everyone who does this does it in bad faith. Sometimes it’s just a genuine lack of understanding, but often it is done to manipulate and profit and that's what we’re here to talk about.
 
-The grift as the thumbnail shows, is this:
+The grift, is this:
 
 *Capable artists cutting between footage of performance art pieces or modern art that they deem terrible, then back to their own personal works, with some message along the lines of “Work that’s in galleries vs what I make”, or a direct complaint that they don’t make any money or have any gallery spots.*
 

@@ -17,7 +17,11 @@ import Footer from "../components/Footer.astro";
     dark:text-[#f0decc]"
   >
     <Navbar />
-    <slot />
+    
+    <main class="flex-grow">
+      <slot />
+    </main>
+
     <Footer />
   </body>
 </html>

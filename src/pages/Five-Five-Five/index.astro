@@ -1,0 +1,322 @@
+---
+// 1. IMPORTS
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/Section.astro";
+import GameInput from "../../components/GameInput.astro";
+ 
+import { getDailyGameSet, seededShuffle } from "../../data/GameLogic";
+import { gameTopics as envSciTopics } from "../../data/GameEnvSci";
+import { gameTopics as geoTopics } from "../../data/GameGeography";
+import { gameTopics as natSciTopics } from "../../data/GameNatSci";
+import { gameTopics as otherTopics } from "../../data/GameOthers"; 
+ 
+// 2. SERVER-SIDE PRE-REQUISITES
+const rawTopics = [...envSciTopics, ...geoTopics, ...natSciTopics, ...otherTopics]; 
+const jumbledTopics = seededShuffle(rawTopics, 12345);
+const dailySet = getDailyGameSet(jumbledTopics);
+const scienceTopics = [...envSciTopics, ...natSciTopics];
+---
+ 
+<BaseLayout>
+  <Section>
+    <div id="game-root" 
+         data-daily-set={JSON.stringify(dailySet)}
+         data-geo-set={JSON.stringify(geoTopics)}
+         data-sci-set={JSON.stringify(scienceTopics)}>
+      
+      <div id="menu-screen" class="flex flex-col items-center gap-6 max-w-2xl mx-auto py-10">
+        <h1 class="text-4xl font-bold text-[#032922] dark:text-[#f5e5d5] mb-2">The 5-5-5 Game!</h1>
+        
+        <div class="w-full max-w-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-6 text-center">
+            <p class="text-[#032922] text-xl dark:text-[#f5e5d5] leading-relaxed">
+                Welcome to The 5-5-5 Game. Each question has 5 answers, there's 5 rounds, and you get 5 seconds per answer. Be prepared for some high speed quizzing on a wide range of hand-curated topics!
+            </p>
+        </div>
+ 
+        <button id="play-daily-btn" class="w-full bg-[#1abc9c] text-white rounded-2xl px-6 py-4 text-xl font-semibold shadow-md hover:bg-[#16a085] transition-all">
+          Play The Daily Game
+        </button>
+        
+        <div class="grid grid-cols-2 gap-4 w-full">
+          <button id="practice-sci-btn" class="bg-[#34495e] text-white rounded-2xl px-4 py-3 text-lg font-semibold shadow-md hover:bg-[#2c3e50] transition-all">
+            Practice Science!
+          </button>
+          <button id="practice-geo-btn" class="bg-[#34495e] text-white rounded-2xl px-4 py-3 text-lg font-semibold shadow-md hover:bg-[#2c3e50] transition-all">
+            Practice Geography!
+          </button>
+        </div>
+ 
+        <button id="play-relaxed-btn" class="w-full bg-[#34495e] text-white rounded-2xl px-6 py-3 text-lg font-semibold shadow-md hover:bg-[#2c3e50] transition-all">
+          Relaxed Mode — Play the daily with no timer. Perfect for mobile users.
+        </button>
+ 
+        <div class="w-full max-w-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-6 text-center">
+            <p class="text-[#032922] text-xl dark:text-[#f5e5d5] leading-relaxed">
+                All sets of questions and answers have been hand compiled by a team of 2. We have tried our best to include all legitimate variations of answers, but if you stumble onto any glitches or inaccuracies please get in touch and let us know.
+            </p>
+        </div>
+      </div>
+ 
+      <div id="active-game-container" class="hidden">
+        <GameInput />
+        
+        <div class="flex justify-center mt-6">
+          <button id="back-to-menu-btn" class="hidden bg-gray-600 text-white rounded-2xl px-6 py-2 font-semibold shadow-md hover:bg-gray-700 transition-all">
+            ← Back to 5-5-5 Game Menu
+          </button>
+        </div>
+      </div>
+ 
+    </div>
+  </Section>
+</BaseLayout>
+ 
+<script>
+  import { createGameGame, checkAnswer, renderAnswerBox, generateShareText, getRandomGameSet } from "../../data/GameLogic";
+ 
+  const root = document.getElementById('game-root');
+  
+  if (root) {
+    const dailySet = JSON.parse(root.dataset.dailySet || '[]');
+    const geoSet = JSON.parse(root.dataset.geoSet || '[]');
+    const sciSet = JSON.parse(root.dataset.sciSet || '[]');
+ 
+    let activeSet: any[] = [];
+    let currentRound = 0;
+    let sessionHistory: any[] = []; 
+    let gameState = createGameGame(dailySet[0]);
+    let gameInterval: number | undefined;
+    let isDailyMode = true;
+    let isRelaxedMode = false;
+    let modeName = "";
+ 
+    const menuScreen = document.getElementById('menu-screen')!;
+    const activeGameContainer = document.getElementById('active-game-container')!;
+    const backToMenuBtn = document.getElementById('back-to-menu-btn')!;
+    
+    const startBtn = document.getElementById('start-game-btn');
+    const nextBtn = document.getElementById('next-round-btn');
+    const startScreen = document.getElementById('start-screen');
+    
+    const gameplayUI = document.getElementById('gameplay-ui');
+    const input = document.querySelector('[data-Game-input]') as HTMLInputElement;
+    const container = document.querySelector('[data-Game-answers-container]') as HTMLElement;
+    const timerDisplay = document.querySelector('[data-timer-display]') as HTMLElement;
+    const questionDisplay = document.getElementById('current-question');
+    const roundIndicator = document.getElementById('round-indicator');
+    const gameOverPanel = document.getElementById('game-over-panel');
+    const gameOverMessage = document.getElementById('game-over-message');
+    const shareBtn = document.getElementById('share-btn') as HTMLButtonElement;
+ 
+    const showMenu = () => {
+      menuScreen.classList.remove('hidden');
+      activeGameContainer.classList.add('hidden');
+      backToMenuBtn.classList.add('hidden');
+      if (gameInterval) clearInterval(gameInterval);
+    };
+ 
+    const initGameSession = (set: any[], isDaily: boolean, name: string, isRelaxed: boolean = false) => {
+      activeSet = set;
+      currentRound = 0;
+      sessionHistory = [];
+      isDailyMode = isDaily;
+      isRelaxedMode = isRelaxed;
+      modeName = name;
+      
+      menuScreen.classList.add('hidden');
+      activeGameContainer.classList.remove('hidden');
+      
+      setupRound(0);
+ 
+      const titleElement = document.getElementById('game-mode-title');
+      const subtitleElement = document.getElementById('game-mode-subtitle');
+ 
+      if (titleElement) {
+        if (isRelaxed) {
+          titleElement.textContent = "5-5-5 Relaxed Mode";
+        } else if (isDaily) {
+          titleElement.textContent = "5-5-5 Daily Game!";
+        } else {
+          titleElement.textContent = `5-5-5 ${name} Practice!`;
+        }
+      }
+      if (subtitleElement) {
+        subtitleElement.style.fontSize = "1.125rem";
+        if (isRelaxed) {
+          subtitleElement.innerHTML = "Today's daily questions, but with no timer. Take your time and enjoy the game!<br><br><strong>Note:</strong> You still get 5 guesses per round, so choose wisely.";
+        } else if (isDaily) {
+          subtitleElement.innerHTML = "A new set of 5 rounds every day. These will be the same for every player.<br><br><strong>Top Tip:</strong> If you can't think of anything, waste a guess to reset the timer back to 5s, and buy yourself more thinking time!";
+        } else {
+          subtitleElement.innerHTML = `Practice your ${name} knowledge across 5 random rounds. You can refresh and play infinitely many new games per day. The format otherwise is the same as the Daily Game.`;
+        }
+      }
+ 
+      startScreen?.classList.remove('hidden');
+      gameplayUI?.classList.add('hidden');
+      backToMenuBtn.classList.remove('hidden');
+    };
+ 
+    const setupRound = (roundIndex: number) => {
+      const topic = activeSet[roundIndex];
+      if (!topic) return;
+ 
+      gameState = createGameGame(topic);
+      
+      if (questionDisplay) questionDisplay.textContent = topic.label;
+      if (roundIndicator) roundIndicator.textContent = `Round ${roundIndex + 1} of ${activeSet.length}`;
+      
+      input.disabled = false;
+      input.value = '';
+      container.innerHTML = '';
+      if (timerDisplay) timerDisplay.textContent = "5"; 
+ 
+      const timerBox = document.getElementById('timer-box');
+      if (timerBox) {
+        timerBox.style.borderColor = '';
+        timerBox.style.color = '';
+      }
+      
+      gameOverPanel?.classList.add('hidden');
+      if (gameOverPanel) gameOverPanel.style.display = 'none';
+      nextBtn?.classList.add('hidden');
+      shareBtn?.classList.add('hidden');
+    };
+ 
+    const startCurrentRound = () => {
+      gameState.isStarted = true;
+      gameState.startTime = performance.now();
+      
+      startScreen?.classList.add('hidden');
+      gameplayUI?.classList.remove('hidden');
+      backToMenuBtn.classList.add('hidden'); 
+      input.focus();
+ 
+      // Hide timer box in relaxed mode
+      const timerBox = document.getElementById('timer-box');
+      if (timerBox) {
+        timerBox.style.display = isRelaxedMode ? 'none' : '';
+      }
+ 
+      if (isRelaxedMode) return; // No interval needed in relaxed mode
+ 
+      let lastTick = performance.now();
+      gameInterval = window.setInterval(() => {
+        const now = performance.now();
+        const delta = (now - lastTick) / 1000;
+        lastTick = now;
+        gameState.timeLeftSeconds -= delta;
+        if (timerDisplay) {
+          timerDisplay.textContent = Math.ceil(Math.max(0, gameState.timeLeftSeconds)).toString();
+        }
+        if (gameState.timeLeftSeconds <= 0) {
+          const timerBox = document.getElementById('timer-box');
+          if (timerBox) {
+            timerBox.style.borderColor = 'rgba(231, 76, 60, 0.8)';
+            timerBox.style.color = 'rgba(231, 76, 60, 0.8)';
+          }
+          finishRound();
+        }
+      }, 10);
+    };
+ 
+    const finishRound = () => {
+      if (gameInterval) clearInterval(gameInterval);
+      gameState.endTime = performance.now();
+      gameState.isGameOver = true;
+      input.disabled = true;
+      
+      sessionHistory.push({...gameState});
+ 
+      const won = gameState.correctAnswers.length === 5;
+      gameOverPanel?.classList.remove('hidden');
+      if (gameOverPanel) gameOverPanel.style.display = 'flex';
+      
+      if (gameOverMessage) {
+        const dur = ((gameState.endTime - gameState.startTime!) / 1000).toFixed(2);
+        gameOverMessage.textContent = won ? `Perfect! (${dur}s)` : `Finished: ${gameState.correctAnswers.length}/5`;
+      }
+ 
+      if (currentRound < activeSet.length - 1) {
+        nextBtn?.classList.remove('hidden');
+      } else {
+        backToMenuBtn.classList.remove('hidden');
+        
+        if (gameOverMessage) {
+          const totalScore = sessionHistory.reduce((acc, curr) => acc + curr.correctAnswers.length, 0);
+          const totalTime = sessionHistory.reduce((acc, curr) => acc + ((curr.endTime! - curr.startTime!) / 1000), 0);
+          
+          let html = `<div class="flex flex-col items-center gap-2 w-full">`;
+          html += `<span class="text-2xl font-bold text-[#032922] dark:text-[#f5e5d5]">${isDailyMode || isRelaxedMode ? "Daily Challenge Complete!" : "Practice Complete!"}</span>`;
+          html += `<span class="text-lg font-semibold text-gray-700 dark:text-gray-300">Total Score: ${totalScore}/${activeSet.length * 5} | Total Time: ${totalTime.toFixed(2)}s</span>`;
+          html += `<div class="text-sm mt-3 flex flex-col gap-2 w-full max-w-sm text-left bg-black/5 dark:bg-white/5 p-4 rounded-xl text-[#032922] dark:text-[#f5e5d5]">`;
+          
+          sessionHistory.forEach((round, i) => {
+            const rScore = round.correctAnswers.length;
+            const rTime = ((round.endTime! - round.startTime!) / 1000).toFixed(2);
+            html += `
+              <div class="flex justify-between items-center border-b border-gray-300 dark:border-gray-600 pb-1 last:border-0 last:pb-0">
+                <span class="truncate pr-2 font-medium" title="${round.topic.category}">Round ${i + 1}: ${round.topic.category}</span>
+                <span class="font-bold whitespace-nowrap">${rScore}/5 <span class="text-xs font-normal opacity-75">(${rTime}s)</span></span>
+              </div>`;
+          });
+          
+          html += `</div></div>`;
+          gameOverMessage.innerHTML = html;
+        }
+ 
+        // Share button only for the proper timed daily mode
+        if (isDailyMode && !isRelaxedMode) {
+          shareBtn?.classList.remove('hidden');
+          if (shareBtn) shareBtn.textContent = "📋 Share Results";
+        } else {
+          shareBtn?.classList.add('hidden');
+        }
+      }
+    };
+ 
+    // Event Listeners
+    document.getElementById('play-daily-btn')?.addEventListener('click', () => initGameSession(dailySet, true, "Daily", false));
+    document.getElementById('practice-sci-btn')?.addEventListener('click', () => initGameSession(getRandomGameSet(sciSet, 5), false, "Science", false));
+    document.getElementById('practice-geo-btn')?.addEventListener('click', () => initGameSession(getRandomGameSet(geoSet, 5), false, "Geography", false));
+    document.getElementById('play-relaxed-btn')?.addEventListener('click', () => initGameSession(dailySet, false, "Relaxed", true));
+    backToMenuBtn.addEventListener('click', showMenu);
+ 
+    startBtn?.addEventListener('click', startCurrentRound);
+ 
+    nextBtn?.addEventListener('click', () => {
+      currentRound++;
+      setupRound(currentRound);
+      startCurrentRound();
+    });
+ 
+    input?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = input.value.trim();
+        if (!val || gameState.isGameOver) return;
+        const historyBefore = gameState.guessHistory.length;
+        gameState = checkAnswer(gameState, val);
+        input.value = '';
+        if (gameState.guessHistory.length > historyBefore) {
+          const last = gameState.guessHistory[gameState.guessHistory.length - 1];
+          renderAnswerBox(last.word, last.correct, input, container);
+          if (!isRelaxedMode) {
+            gameState.timeLeftSeconds = 5; 
+            if (timerDisplay) timerDisplay.textContent = "5";
+          }
+          if (gameState.isGameOver) finishRound();
+        }
+      }
+    });
+ 
+    shareBtn?.addEventListener('click', async () => {
+      if (!isDailyMode || isRelaxedMode) return;
+      const text = generateShareText(sessionHistory);
+      try {
+        await navigator.clipboard.writeText(text);
+        const originalText = shareBtn.textContent;
+        shareBtn.textContent = "✅ Copied!";
+        setTimeout(() => { if (shareBtn) shareBtn.textContent = originalText; }, 2000);
+      } catch (err) { console.error(err); }
+    });
+  }
+</script>

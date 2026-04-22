@@ -1,0 +1,47 @@
+---
+/* src/components/GameInput.astro */
+---
+<div class="w-full max-w-2xl mx-auto">
+  <div id="start-screen" class="flex flex-col items-center gap-6 text-center py-10">
+    <h1 id="game-mode-title" class="text-4xl font-bold text-[#032922] dark:text-[#f5e5d5]"></h1>
+    <div class="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-6 text-center">
+      <p id="game-mode-subtitle" class="text-[#032922] dark:text-[#f5e5d5] leading-relaxed"></p>
+    </div>
+    <button id="start-game-btn" class="bg-[#1abc9c] text-white rounded-2xl px-10 py-4 text-2xl font-bold shadow-lg hover:bg-[#16a085] transition-all transform hover:scale-105">
+      Start Round
+    </button>
+  </div>
+ 
+  <div id="gameplay-ui" class="hidden flex flex-col items-center gap-6 w-full">
+ 
+    <div class="text-center w-full">
+      <p id="round-indicator" class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-1"></p>
+      <h2 id="current-question" class="text-3xl font-bold text-[#032922] dark:text-[#f5e5d5] leading-tight"></h2>
+    </div>
+ 
+    <div class="w-full flex items-center gap-4">
+      <div id="timer-box" class="w-16 flex-shrink-0 bg-white dark:bg-[#0d2e22] text-[#032922] dark:text-[#f5e5d5] rounded-2xl flex items-center justify-center text-3xl font-extrabold border-4 border-[#c9a96e] py-4">
+        <span data-timer-display>5</span>
+      </div>
+      <input
+        type="text"
+        data-Game-input
+        placeholder="Type your answer here..."
+        class="flex-grow bg-white dark:bg-[#0d2e22] border-4 border-[#c9a96e] rounded-2xl px-6 py-4 text-2xl font-bold text-[#032922] dark:text-[#f5e5d5] placeholder:text-gray-400 focus:outline-none focus:border-[#1abc9c] transition-colors shadow-inner"
+        autocomplete="off"
+      />
+    </div>
+ 
+    <div data-Game-answers-container class="w-full flex flex-col gap-3 min-h-[300px]">
+    </div>
+ 
+    <div id="game-over-panel" class="hidden flex-col items-center gap-4 w-full text-center mt-4">
+      <div id="game-over-message" class="text-xl font-bold text-[#032922] dark:text-[#f5e5d5]"></div>
+      <div class="flex flex-col gap-3 w-full">
+        <button id="next-round-btn" class="hidden w-full bg-[#1abc9c] text-white rounded-xl py-3 font-bold hover:bg-[#16a085] transition-all">Next Round →</button>
+        <button id="share-btn" class="hidden w-full bg-[#3498db] text-white rounded-xl py-3 font-bold hover:bg-[#2980b9] transition-all">📋 Share Results</button>
+      </div>
+    </div>
+ 
+  </div>
+</div>
