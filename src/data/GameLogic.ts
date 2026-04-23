@@ -6,7 +6,7 @@ export type GameTopic = {
   timeLimitSeconds: number;
   answers: string[];
 };
-
+ 
 export type GameGameState = {
   topic: GameTopic;
   remainingAnswers: string[];
@@ -18,42 +18,46 @@ export type GameGameState = {
   endTime: number | null;   
   guessHistory: { word: string; correct: boolean }[];
 };
-
+ 
 // 2. SELECTION LOGIC
-
+ 
 export const getDailyGameSet = (
   topics: GameTopic[],
   date = new Date(),
-  epoch = new Date("2026-04-13")
+  epoch = new Date("2026-04-23")
 ): GameTopic[] => {
   const utcDate = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
   const utcEpoch = Date.UTC(epoch.getUTCFullYear(), epoch.getUTCMonth(), epoch.getUTCDate());
   const dayIndex = Math.floor((utcDate - utcEpoch) / (24 * 60 * 60 * 1000));
-  
-  const shuffled = seededShuffle(topics, dayIndex);
-  const dailySet: GameTopic[] = [];
-  const usedCategories = new Set<string>();
-
-  for (const topic of shuffled) {
-    if (!usedCategories.has(topic.category)) {
-      dailySet.push(topic);
-      usedCategories.add(topic.category);
-    }
-    if (dailySet.length === 5) break;
-  }
-
-  if (dailySet.length < 5) {
+ 
+  // Shuffle the full pool once with a fixed seed so partitioning is always identical
+  const shuffled = seededShuffle(topics, 99999);
+  const allDailySets: GameTopic[][] = [];
+  const usedIds = new Set<string>();
+ 
+  while (true) {
+    const dailySet: GameTopic[] = [];
+    const usedCategories = new Set<string>();
+ 
     for (const topic of shuffled) {
-      if (!dailySet.find(t => t.id === topic.id)) {
+      if (!usedIds.has(topic.id) && !usedCategories.has(topic.category)) {
         dailySet.push(topic);
+        usedCategories.add(topic.category);
       }
       if (dailySet.length === 5) break;
     }
+ 
+    if (dailySet.length < 5) break; // not enough questions left for a full set
+ 
+    dailySet.forEach(t => usedIds.add(t.id));
+    allDailySets.push(dailySet);
   }
-  
-  return dailySet;
+ 
+  // Cycle through the sets based on day index
+  const setIndex = dayIndex % allDailySets.length;
+  return allDailySets[setIndex];
 };
-
+ 
 export const getRandomGameSet = (
   topics: GameTopic[], 
   count: number = 5
@@ -62,7 +66,7 @@ export const getRandomGameSet = (
     .sort(() => Math.random() - 0.5)
     .slice(0, count);
 };
-
+ 
 export const seededShuffle = <T>(array: T[], seed: number): T[] => {
   const shuffled = [...array];
   let m = shuffled.length, t, i, s = seed;
@@ -74,7 +78,7 @@ export const seededShuffle = <T>(array: T[], seed: number): T[] => {
   }
   return shuffled;
 };
-
+ 
 // 3. CORE GAME FUNCTIONS
 export const createGameGame = (topic: GameTopic): GameGameState => ({
   topic,
@@ -87,13 +91,13 @@ export const createGameGame = (topic: GameTopic): GameGameState => ({
   endTime: null,
   guessHistory: [],
 });
-
+ 
 export const checkAnswer = (state: GameGameState, answer: string): GameGameState => {
   if (state.isGameOver) return state;
   const normalized = answer.trim().toLowerCase();
   
   if (state.correctAnswers.some(c => c.toLowerCase() === normalized)) return state;
-
+ 
   const matched = state.remainingAnswers.find(item => item.toLowerCase() === normalized);
   const isCorrect = !!matched;
   
@@ -111,27 +115,25 @@ export const checkAnswer = (state: GameGameState, answer: string): GameGameState
     isGameOver: newHistory.length >= 5 || newCorrectAnswers.length >= 5, 
   };
 };
-
+ 
 // 4. RESULTS GENERATION
-
+ 
 export const generateShareText = (results: GameGameState[]): string => {
   const today = new Date().toLocaleDateString('en-GB'); 
   const totalScore = results.reduce((acc, curr) => acc + curr.correctAnswers.length, 0);
   const totalTime = results.reduce((acc, curr) => acc + ((curr.endTime! - curr.startTime!) / 1000), 0);
-
+ 
   const roundDetails = results.map(round => {
     const duration = ((round.endTime! - round.startTime!) / 1000).toFixed(2);
     const grid = round.guessHistory.map(g => g.correct ? '🟩' : '🟥').join('');
     const paddingEmoji = '🟥'.repeat(Math.max(0, 5 - round.guessHistory.length));
     
-    // Shorten the long name as requested
     let displayCat = round.topic.category;
     if (displayCat === "Environmental Sciences") displayCat = "Env. Science";
     
-    // Format: Category on one line, squares and time on the next
     return `${displayCat}:\n${grid}${paddingEmoji} (${duration}s)`;
   });
-
+ 
   return [
     `5-5-5 Game... ${today}`, 
     `Total Score: ${totalScore}/${results.length * 5}`,
@@ -142,13 +144,13 @@ export const generateShareText = (results: GameGameState[]): string => {
     `Play at: ${window.location.origin}`
   ].join('\n');
 };
-
+ 
 export const generateSummaryText = (results: GameGameState[]): string => {
   const totalScore = results.reduce((acc, curr) => acc + curr.correctAnswers.length, 0);
   const totalTime = results.reduce((acc, curr) => acc + ((curr.endTime! - curr.startTime!) / 1000), 0);
   return `Game Complete!\nScore: ${totalScore}/${results.length * 5}\nTotal Time: ${totalTime.toFixed(2)}s`;
 };
-
+ 
 // 5. UI HELPER
 export const renderAnswerBox = (answer: string, isCorrect: boolean, inputElement: HTMLInputElement, containerElement: HTMLElement) => {
   const rect = inputElement.getBoundingClientRect();

@@ -3,17 +3,15 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Section from "../../components/Section.astro";
 import GameInput from "../../components/GameInput.astro";
- 
-import { getDailyGameSet, seededShuffle } from "../../data/GameLogic";
+import { getDailyGameSet } from "../../data/GameLogic";
 import { gameTopics as envSciTopics } from "../../data/GameEnvSci";
 import { gameTopics as geoTopics } from "../../data/GameGeography";
 import { gameTopics as natSciTopics } from "../../data/GameNatSci";
 import { gameTopics as otherTopics } from "../../data/GameOthers"; 
- 
+
 // 2. SERVER-SIDE PRE-REQUISITES
 const rawTopics = [...envSciTopics, ...geoTopics, ...natSciTopics, ...otherTopics]; 
-const jumbledTopics = seededShuffle(rawTopics, 12345);
-const dailySet = getDailyGameSet(jumbledTopics);
+const dailySet = getDailyGameSet(rawTopics);
 const scienceTopics = [...envSciTopics, ...natSciTopics];
 ---
  

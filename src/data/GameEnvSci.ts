@@ -24,6 +24,7 @@ export const gameTopics: GameTopic[] = [
     timeLimitSeconds: 5,
     answers: [
       "Calf",
+      "kid",
       "Fawn",
       "Pup",
       "Puppy",
