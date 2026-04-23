@@ -1,0 +1,11 @@
+name: Daily Rebuild
+on:
+  schedule:
+    - cron: '0 0 * * *'  # runs at midnight UTC = 1am UK winter, 1am UK summer (adjust if needed)
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Deploy
+        run: curl -X POST ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
