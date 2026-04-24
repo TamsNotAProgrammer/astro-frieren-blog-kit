@@ -94,6 +94,7 @@ export const gameTopics: GameTopic[] = [
       "Cerebrum",
       "Cerebellum",
       "Brainstem",
+      "hippocampus",
       "Hypothalamus",
       "Thalamus",
       "Limbic System",
