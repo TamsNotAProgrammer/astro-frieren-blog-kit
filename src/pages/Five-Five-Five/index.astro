@@ -206,13 +206,34 @@ const scienceTopics = [...envSciTopics, ...natSciTopics];
         if (timerDisplay) {
           timerDisplay.textContent = Math.ceil(Math.max(0, gameState.timeLeftSeconds)).toString();
         }
+
         if (gameState.timeLeftSeconds <= 0) {
           const timerBox = document.getElementById('timer-box');
           if (timerBox) {
             timerBox.style.borderColor = 'rgba(231, 76, 60, 0.8)';
             timerBox.style.color = 'rgba(231, 76, 60, 0.8)';
           }
-          finishRound();
+
+          // Add a penalty guess
+          const penaltyHistory = [...gameState.guessHistory, { word: '', correct: false }];
+          gameState = { ...gameState, guessHistory: penaltyHistory, timeLeftSeconds: 5 };
+
+          // Render an empty red box
+          renderAnswerBox('', false, input, container);
+          if (timerDisplay) timerDisplay.textContent = "5";
+
+          // Reset timer box colour
+          setTimeout(() => {
+            if (timerBox) {
+              timerBox.style.borderColor = '';
+              timerBox.style.color = '';
+            }
+          }, 300);
+
+          // Check if that was their 5th guess
+          if (penaltyHistory.length >= 5) {
+            finishRound();
+          }
         }
       }, 10);
     };
