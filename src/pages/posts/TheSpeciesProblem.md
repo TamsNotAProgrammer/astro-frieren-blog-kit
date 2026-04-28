@@ -46,7 +46,7 @@ This isn’t always the case however, this is not always the case. I have shared
 
 ![Gartersnake genetics, from Fitzpatrick et al. 2015.](/Gartersnake.PNG)
 #### From Fitzpatrick et al. 2015 - A study of genetic mixing between an endangered and common pair of gartersnake species. 
-[Full paper found here](academic.oup.com/cz/article/61/1/206/1792969?__cf_chl_tk=PM0.toHGOTcOXccKTOCQG4AbQADz9j0cjdE67RCbGh8-1769724663-1.0.1.1-dWS5gGydOKAdRogEo0qBAUYXY_dNgGehESyO1i_2Rnc)
+[Full paper found here](https://academic.oup.com/cz/article/61/1/206/1792969)
 
 
 This matters for more than just legal reasons, too; hybridisation can pose a serious risk to species like this population of butler’s gartersnake. If the other species is more prolific, this genetic curve may slowly shift across, and by ignoring this, the protected population could disappear without anyone realising that it's only hybrids left.
