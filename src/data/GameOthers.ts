@@ -920,6 +920,8 @@ export const gameTopics: GameTopic[] = [
       "king oyster",
       "porcini",
       "enoki",
+      "button",
+      "button mushroom",
       "Closed cup mushroom",
       "white button mushroom",
       "flat mushroom",
