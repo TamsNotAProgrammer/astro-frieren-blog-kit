@@ -541,7 +541,7 @@ export const gameTopics: GameTopic[] = [
   {
     id: "question-22",
     category: "Natural Sciences",
-    label: " Give me 5... Periodic Table Elements found in every organic molecule (Total = 6).",
+    label: " Give me 5... Periodic Table Elements found in every organic cell(Total = 6).",
     timeLimitSeconds: 5,
     answers: [
       "carbon",
