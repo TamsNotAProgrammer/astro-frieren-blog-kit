@@ -291,7 +291,8 @@ export const gameTopics: GameTopic[] = [
 	label: " Give me 5... Of Oasis' Top 20 Songs (By Spotify Listens) (Total = 10+).",
 	timeLimitSeconds: 5,
 	answers: [
-		"Wonderwall ",
+		"Wonderwall",
+		"wonder wall",
 		"Don't Look Back in Anger",
 		"Champagne Supernova",
 		"Stop Crying Your Heart Out",
