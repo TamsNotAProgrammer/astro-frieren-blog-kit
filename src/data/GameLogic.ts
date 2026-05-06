@@ -105,6 +105,7 @@ export const retiredDailyIds = new Set<string>([
 // Day 11 - 05/05/2026:
   "Environmental Sciences:question-5",
   "Natural Sciences:question-23",
+  "Geography:question-7",
   "Words:question-16",
   "Language:question-56",
 ]);
