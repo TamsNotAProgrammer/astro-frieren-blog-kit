@@ -587,6 +587,8 @@ export const gameTopics: GameTopic[] = [
       "floods",
       "flooding",
       "flood",
+      "tornado",
+      "tornados",
       "flash floods",
       "flash flooding",
       "flash flood",
