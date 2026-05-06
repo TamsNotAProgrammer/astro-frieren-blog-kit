@@ -101,6 +101,12 @@ export const retiredDailyIds = new Set<string>([
   "History:question-52",
   "Natural Sciences:question-25",
   "Gastronomy:question-30",
+
+// Day 11 - 05/05/2026:
+  "Environmental Sciences:question-5",
+  "Natural Sciences:question-23",
+  "Words:question-16",
+  "Language:question-56",
 ]);
 
 export const getDailyGameSet = (
