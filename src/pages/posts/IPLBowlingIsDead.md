@@ -17,7 +17,7 @@ tags:
 
 ## Cricket is Dead. Who Needs Bowlers Anyway?
 ​
-I watched in the last week or two, I watched the followers bowling all play:
+In the last week or two, I watched the followers bowling all play:
 
 
 
