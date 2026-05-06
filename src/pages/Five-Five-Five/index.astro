@@ -8,17 +8,18 @@ import { gameTopics as envSciTopics } from "../../data/GameEnvSci";
 import { gameTopics as geoTopics } from "../../data/GameGeography";
 import { gameTopics as natSciTopics } from "../../data/GameNatSci";
 import { gameTopics as otherTopics } from "../../data/GameOthers";
-import { gameTopics as otherTopics } from "../../data/GameOthers2";
-import { gameTopics as otherTopics } from "../../data/GameMusic";
-import { gameTopics as otherTopics } from "../../data/GameWords";
-
-
-
+import { gameTopics as other2Topics } from "../../data/GameOthers2";
+import { gameTopics as musicTopics } from "../../data/GameMusic";
+import { gameTopics as wordsTopics } from "../../data/GameWords";
 
 // 2. SERVER-SIDE PRE-REQUISITES
-const rawTopics = [...envSciTopics, ...geoTopics, ...natSciTopics, ...otherTopics]; 
+const rawTopics = [...envSciTopics, ...geoTopics, ...natSciTopics, ...otherTopics, ...other2Topics, ...musicTopics, ...wordsTopics];
 const dailySet = getDailyGameSet(rawTopics);
 const scienceTopics = [...envSciTopics, ...natSciTopics];
+
+// DEBUG - remove after testing
+const testRetired = rawTopics.filter(t => t.id === "question-56");
+console.log("question-56 entries:", testRetired.map(t => `${t.category}:${t.id}`));
 ---
  
 <BaseLayout>
