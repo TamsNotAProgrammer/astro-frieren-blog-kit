@@ -384,7 +384,7 @@ export const gameTopics: GameTopic[] = [
 }, 
 {  
     id: "question-11",
-    category: "Language",
+    category: "Words",
     label: "Give me 5... Words ending in -light (Total = 10+)",
     timeLimitSeconds: 5,
     answers: [
@@ -454,7 +454,7 @@ export const gameTopics: GameTopic[] = [
 
 {  
     id: "question-12",
-    category: "Language",
+    category: "Words",
     label: "Give me 5... Of the 55 'common' words starting with Tri- (according to Merriam Webster) (Total = 55)",
     timeLimitSeconds: 5,
     answers: [
@@ -520,7 +520,7 @@ export const gameTopics: GameTopic[] = [
 
  {  
     id: "question-13",
-    category: "Language",
+    category: "Words",
     label: "Give me 5... Words that Start with Omni- (Total = 10+).",
     timeLimitSeconds: 5,
     answers: [
@@ -565,7 +565,7 @@ export const gameTopics: GameTopic[] = [
 
 {  
     id: "question-14",
-    category: "Language",
+    category: "Words",
     label: "Give me 5... Words Ending in -thing (Total = 10+)",
     timeLimitSeconds: 5,
     answers: [
