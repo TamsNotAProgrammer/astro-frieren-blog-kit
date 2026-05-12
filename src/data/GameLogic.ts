@@ -127,6 +127,12 @@ export const retiredDailyIds = new Set<string>([
   "Environmental Sciences:question-9",
   "Language and Linguistics:question-12",
   "Art and Literature:question-9",
+
+  "Art and Literature:question-45",
+  "Geography:question-21",
+  "Sports and Games:question-21",
+  "Words:question-5",
+  "History:question-29",
 ]);
 
 export const getDailyGameSet = (
