@@ -202,6 +202,7 @@ export const gameTopics: GameTopic[] = [
 		"cater",
 		"chape",
 		"chapt",
+		"teach",
 		"chare",
 		"chart",
 		"cheap",
