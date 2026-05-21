@@ -543,6 +543,7 @@ export const gameTopics: GameTopic[] = [
       "Algiers",
       "Luanda",
       "Porto-Novo",
+      "Porto Novo",
       "Gaborone",
       "Ouagadougou",
       "Bujumbura",
