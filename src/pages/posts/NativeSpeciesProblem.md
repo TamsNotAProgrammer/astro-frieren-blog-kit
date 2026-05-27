@@ -22,16 +22,22 @@ tags:
 
 This unassuming grass pictured is Spartina anglica; as you may guess from the name anglica, it evolved in Britain. This makes it nice and easy to confidently say, this species is not an invasive species here in the UK… except by some definitions of an invasive species it is. Although most people’s idea of an invasive is something brand new and exotic taking over the land, like say, Japanese Knotweed, it’s hard to draw a line on how recently something has to have arrived to be an invader. Spartina Anglica only developed 200 years ago, and several of England's marshes in which it grows are over 500 years old. There’s been marshland here for thousands of years, so if you could ask the marsh what it thinks, it’d tell you that this grass is a very recent new visitor.
 ​
+
 What this all boils down to is the impossibility of answering the question "what's meant to be here”. In conservation/restoration, it’s relatively easy, and indeed important, to point at things that aren’t meant to be in an ecosystem, like a tarmac road or Japanese Knotweed; but due to the ever-changing nature of the environment, it’s much harder to pick an exact image of what that location “should” be.
 ​
+
 Around the world, our perceptions of what things belong where don’t quite match the history.
 ​
+
 The Sicilian lemon? Imported to the continent by the Romans. The delicious pizza? Topped with tomatoes that didn’t exist in Europe til the 16th century.
 ​
+
 Picture the English countryside, open grassland, and rabbits grazing. The grassland was once forest, often within the last 1000 years, and those rabbits? Well, we’ve got the Romans to thank again, as they brought them to Britain when they first crossed the channel.
 ​
+
 Picture a traditional American plain, a cowboy with a lasso herding his cattle atop a mighty horse. The first cow stepped foot in America in 1494, and the horse in 1519.
 ​
+
 That's enough examples, I could go on forever, but hopefully the point is clear now. Wherever you look, our landscapes are heavily altered by human history, and those alterations have become so natural to us that it’s easy to forget things weren’t always like this.
 
 ​
