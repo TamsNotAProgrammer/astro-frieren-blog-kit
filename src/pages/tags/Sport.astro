@@ -1,0 +1,92 @@
+---
+import Section from "../../components/Section.astro";
+import Card from "../../components/Card.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { AppConfig } from "../../utils/AppConfig";
+import type { MarkdownInstance } from "astro";
+
+const title = "Tamarisk Sports Analysis";
+const description = "Asking difficult questions about Football, Cricket, and more.";
+
+// Fetch all posts directly
+const postImporters = import.meta.glob("../posts/*.md");
+const postModules = await Promise.all(
+  Object.values(postImporters).map((load) => load())
+);
+const allPosts = postModules as MarkdownInstance<Record<string, any>>[];
+
+// Filter for "Sport" tag & sort chronologically (newest first)
+const sortedPosts = allPosts
+  .filter((post) => post.frontmatter.tags?.includes("Sport"))
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).getTime() -
+      new Date(a.frontmatter.pubDate).getTime()
+  );
+---
+
+<BaseLayout head={{ title, description }}>
+  <!-- Import Google Cursive/Serif Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,800&family=Reenie+Beanie&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Grand Hero Banner Box -->
+  <Section>
+    <div
+      class="relative overflow-hidden rounded-3xl bg-[#032922] p-8 sm:p-12 text-[#f5e5d5] shadow-2xl border-b-8 border-[#f5e5d5]/20"
+    >
+      <!-- Subtle Light Glow Background Accent -->
+      <div
+        class="absolute -right-12 -top-12 h-80 w-80 rounded-full bg-[#f5e5d5]/5 blur-3xl pointer-events-none"
+      ></div>
+
+      <div class="relative z-10 max-w-4xl">
+        <!-- Headline -->
+        <h1
+          class="font-serif font-bold text-[#f5e5d5] drop-shadow-md leading-tight"
+          style="font-size: clamp(2.25rem, 4.5vw, 3.5rem);"
+        >
+          Tamarisk <span class="not-italic">Sports</span> Analysis
+        </h1>
+
+        <!-- Subheader -->
+        <p
+          class="mt-4 text-lg sm:text-xl font-medium text-[#f5e5d5]/90 border-l-4 border-[#f5e5d5]/40 pl-4 italic"
+        >
+          Asking difficult questions about Football, Cricket, and more.
+        </p>
+
+        <!-- Footer Metadata with Email -->
+        <div
+          class="mt-8 flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm font-bold tracking-wider text-[#f5e5d5]/80 uppercase"
+        >
+          <span>{sortedPosts.length} Articles Published</span>
+          <span>•</span>
+          <span>Independent Journalism</span>
+          <span>•</span>
+          <a
+            href="mailto:taylor@tamarisk.uk"
+            class="text-[#f5e5d5] hover:text-white underline transition-colors lower-case font-normal"
+          >
+            taylor@tamarisk.uk
+          </a>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Article Grid Section -->
+  <Section>
+    <div class="mt-8 space-y-4">
+      {
+        sortedPosts.map((post) => (
+          <div class="mb-4 basis-1 last:mb-0">
+            <Card post={post} />
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+</BaseLayout>

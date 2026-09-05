@@ -115,12 +115,6 @@ The reason that this solution is so desirable is the following:
 - It's not some far-fetched technology that may or may not come to fruition; it already works and is done
 
 ​
-It does have its problems. Beyond just cost, it could become a case of shifting the problem from unsustainable dredging to unsustainable quarrying, should we start quarrying new rock specifically for the purpose of crushing. It may also become a solution only for the rich nations, while poorer nations still suffer a sand crisis, but one that is now shoved under the rug and getting even less public attention than the current sand crisis. I think the complexity of the potential solution deserves its own long piece, so it will get one.
-
-​
-If you do want to know more about manufactured sand, the scaling-up achieved in China, and the scaling-up issues for the rest of the world… it’ll be out soon, and I’ll update this piece with a direct link to it once it’s released.
-
-
-If you think you can survive just fine without knowing the intricacies of manufactured sand, at least you now know about The Silent Crisis of Sand.
+It does have its problems. Beyond just cost, it could become a case of shifting the problem from unsustainable dredging to unsustainable quarrying, should we start quarrying new rock specifically for the purpose of crushing. It may also become a solution only for the rich nations, while poorer nations still suffer a sand crisis, but one that is now shoved under the rug and getting even less public attention than the current sand crisis. I think the complexity of the potential solution could easily fill its own book, so I won't try condense it too much, but at least you now know about The Silent Crisis of Sand.
 
 

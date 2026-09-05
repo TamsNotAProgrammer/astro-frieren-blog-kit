@@ -35,15 +35,22 @@ const title = AppConfig.title;
 const description = AppConfig.description;
 
 const { posts } = Astro.props;
+
+// Sort posts chronologically (newest first)
+const sortedPosts = posts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.pubDate).getTime() -
+    new Date(a.frontmatter.pubDate).getTime()
+);
 ---
 
 <BaseLayout head={{ title, description }}>
   <Section>
-    <Heading title={`Posts with #${tag}`} />
+    <Heading title={`Articles Tagged with #${tag}`} />
   </Section>
   <Section>
     {
-      posts
+      sortedPosts
         .filter((post) => post.frontmatter.tags?.includes(tag))
         .map((post) => (
           <div class="mb-4 basis-1 last:mb-0">
