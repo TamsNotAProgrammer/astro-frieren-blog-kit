@@ -12,6 +12,7 @@ tags:
  - Cricket
  - Data
  - Opinion
+ - Sport
 
 ---
 

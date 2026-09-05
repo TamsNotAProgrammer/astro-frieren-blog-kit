@@ -12,6 +12,7 @@ tags:
  - Cricket
  - Data
  - Opinion
+ - Sport
 
 ---
 #### An Image of Vaibhav Sooryavanshi, Image rights belong to the BCCI.
