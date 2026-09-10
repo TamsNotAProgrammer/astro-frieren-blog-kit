@@ -8,33 +8,47 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<a href={post.url}>
+<a href={post.url} class="group block my-4">
   <div
-    class="my-4 rounded-2xl bg-gray-100 border-4 border-[#bd9871] text-sm
-  hover:bg-[#bd987150] hover:border-[#bd9871]
-  dark:bg-[#bd9871] dark:border-[#bd9871] dark:hover:border-[#bd9871]"
+    class="rounded-2xl bg-gray-100 border-4 border-[#bd9871] text-sm
+    hover:bg-[#bd987150] hover:border-[#bd9871]
+    dark:bg-[#032922] dark:border-[#bd9871] transition-all duration-200"
   >
     <div
-      class="flex h-full w-full
-		flex-col
-    rounded-2xl
-		p-4
-		text-[#032922]
-    dark:bg-[#032922]
-		dark:text-[#f5e5d5]"
+      class="flex h-full w-full flex-col rounded-2xl p-5 text-[#032922] dark:text-[#f5e5d5]"
     >
       <div class="flex-auto">
-        <div class="flex justify-between pb-4 text-xs">
-          <p>{formatDate(post.frontmatter.pubDate)}</p>
-          <p class="font-bold text-sm">{post.frontmatter.minutesRead}</p>
+        <!-- Date & Reading Time Header -->
+        <div class="flex items-center justify-between gap-2 pb-4">
+          <!-- Date Pill Badge -->
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold
+            bg-[#bd9871] text-[#032922] shadow-sm
+            dark:bg-[#bd9871] dark:text-[#032922]"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            {formatDate(post.frontmatter.pubDate)}
+          </span>
+
+          <!-- Reading Time -->
+          <span class="font-bold text-xs tracking-wide opacity-80 group-hover:opacity-100">
+            {post.frontmatter.minutesRead}
+          </span>
         </div>
 
-        <p class="pb-4 text-lg font-bold">{post.frontmatter.title}</p>
+        <p class="pb-3 text-xl font-bold group-hover:text-[#bd9871] transition-colors">
+          {post.frontmatter.title}
+        </p>
 
         <Tags tags={post.frontmatter.tags} />
-        <p class="line-clamp-6 pt-4">{post.frontmatter.excerpt}</p>
+        <p class="line-clamp-6 pt-4 opacity-90">{post.frontmatter.excerpt}</p>
       </div>
-      <p class="pt-4 underline">read more →</p>
+
+      <p class="pt-4 font-bold underline text-[#bd9871] dark:text-[#bd9871] group-hover:translate-x-1 transition-transform inline-block">
+        read more →
+      </p>
     </div>
   </div>
 </a>
